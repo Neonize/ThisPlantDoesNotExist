@@ -1,0 +1,46 @@
+name: Deployment for the infrastructure
+on:
+  push:
+    branches:
+      - "main"
+    paths:
+      - ".github/workflows/infra.yaml"
+      - "cdk/**"
+
+concurrency:
+  group: ${{ github.ref }}
+  cancel-in-progress: false
+
+permissions:
+  id-token: write # This is required for requesting the JWT
+  contents: read # This is required for actions/checkout
+
+env:
+  NODE_VERSION: 16
+  REGION: us-east-1
+  ROLE_TO_ASSUME: thisplandoesnotexist-deploy
+
+jobs:
+  infrastructure:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      - name: npm install
+        working-directory: cdk/website
+        run: npm install
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1-node16
+        with:
+          role-to-assume: arn:aws:iam::${{ secrets.ACCOUNT_ID }}:role/${{ env.ROLE_TO_ASSUME }}
+          aws-region: ${{ env.REGION }}
+      - name: CDK Deploy
+        uses: youyo/aws-cdk-github-actions@v2
+        with:
+          working_dir: cdk/website
+          cdk_subcommand: deploy
+          cdk_args: --require-approval never
+        env:
+          AWS_DEFAULT_REGION: ${{ env.REGION }}

@@ -1,0 +1,33 @@
+name: "Update packages"
+on:
+  schedule:
+    - cron: "0 4 * * *" #every morning
+  push:
+    paths:
+      - ".github/workflows/update_packages.yaml"
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: Install NCU
+        run: npm i -g npm-check-updates
+      - name: Update packages for website
+        run: ncu -u
+      - name: Install packages for website
+        run: npm install
+      - name: Update packages for cdk
+        working-directory: cdk
+        run: ncu -u
+      - name: Install packages for cdk
+        working-directory: cdk
+        run: npm install
+      - name: Push update
+        uses: stefanzweifel/git-auto-commit-action@v4.16.0
+        with:
+          commit_message: "[GA] Update packages"
