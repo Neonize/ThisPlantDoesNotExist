@@ -6,7 +6,7 @@ export default function Layout({ children }: any) {
   return (
     <>
       <Head>
-        <title>Nextjs-Dev Blog</title>
+        <title>This plant does not exist</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
