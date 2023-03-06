@@ -23,12 +23,6 @@ jobs:
         run: ncu -u
       - name: Install packages for website
         run: npm install
-      - name: Update packages for cdk
-        working-directory: cdk
-        run: ncu -u
-      - name: Install packages for cdk
-        working-directory: cdk
-        run: npm install
       - name: Push update
         uses: stefanzweifel/git-auto-commit-action@v4.16.0
         with:
