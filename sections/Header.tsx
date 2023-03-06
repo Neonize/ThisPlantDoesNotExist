@@ -1,7 +1,8 @@
-import Logo from "../components/Logo";
 import { useTheme } from "next-themes";
 import { useState, useEffect } from "react";
 import { MoonIcon, SunIcon } from "@heroicons/react/24/solid";
+import Link from "next/link";
+import Image from "next/image";
 
 export default function Header() {
   const { systemTheme, theme, setTheme } = useTheme();
@@ -27,7 +28,7 @@ export default function Header() {
     } else {
       return (
         <MoonIcon
-          className="w-10 h-10 text-gray-900 "
+          className="w-10 h-10"
           role="button"
           onClick={() => setTheme("dark")}
         />
@@ -36,11 +37,20 @@ export default function Header() {
   };
 
   return (
-    <header className="h-15 shadow-sm dark:border-gray-700">
-      <div className="container  px-4 sm:px-6 py-4 flex justify-between items-center">
-        <Logo />
-        <h1>This plant does not exist</h1>
-
+    <header>
+      <div className="container px-4 sm:px-6 py-4 flex flex-row justify-between items-center">
+        <Link href="/">
+          <Image
+            className="rounded-full"
+            src="/Tree.png"
+            alt=""
+            height={50}
+            width={50}
+          />
+        </Link>
+        <h1 className="text-3xl tracking-tight font-extrabold max-w-xl leading-tight sm:text-4xl md:text-5xl capitalize">
+          This 🌿 does not exist
+        </h1>
         {renderThemeChanger()}
       </div>
     </header>

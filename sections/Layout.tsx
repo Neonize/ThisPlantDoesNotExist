@@ -1,16 +1,16 @@
-import Head from "next/head";
+import HeadElement from "@/sections/HeadElement";
 import Footer from "./Footer";
 import Header from "./Header";
 
 export default function Layout({ children }: any) {
   return (
     <>
-      <Head>
-        <title>This plant does not exist</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <HeadElement
+        title="This plant does not exist"
+        description="AI generated plants"
+      />
 
-      <div className="dark:text-gray-100 text-gray-900 min-h-screen mx-auto max-w-5xl flex flex-col">
+      <div className="min-h-screen mx-auto max-w-5xl flex flex-col">
         <Header />
         <main className="flex-grow container mx-auto px-4 sm:px-6">
           {children}
