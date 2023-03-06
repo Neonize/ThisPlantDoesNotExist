@@ -5,7 +5,7 @@ import type { AppProps } from "next/app";
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider enableSystem={true} attribute="class">
-      <Component {...pageProps} />
+      <Component {...pageProps} className="text-gray-900 dark:text-gray-100" />
     </ThemeProvider>
   );
 }
