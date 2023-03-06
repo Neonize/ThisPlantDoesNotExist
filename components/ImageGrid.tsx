@@ -31,13 +31,12 @@ export interface Plant {
 export default function ImageGrid() {
   const plants: Plant[] = [
     {
-      Name: "Snake plant",
-      Description: "Zzzzznake",
+      Name: "Spider plant",
+      Description: "No arachnophobia here",
       DaysToWater: 2,
       Difficulty: difficulty.EXPERT,
       Lighting: lighting.IN_BRIGHT_SHADY,
-      ImageURL:
-        "https://s3.amazonaws.com/assets.mockflow.com/app/wireframepro/blockui/Mdca50f8b75d6b4f15a7a324621ec23811643886565545/assets/Mfd0ea53bf924d207a565d74e3b96b8791643953581080/coffee7.jpg",
+      ImageURL: "/images/00018-2713224236.png",
     },
     {
       Name: "Peace lily",
@@ -45,17 +44,15 @@ export default function ImageGrid() {
       DaysToWater: 5,
       Difficulty: difficulty.MODERATE_EASY,
       Lighting: lighting.BRIGHT,
-      ImageURL:
-        "https://s3.amazonaws.com/assets.mockflow.com/app/wireframepro/blockui/Mdca50f8b75d6b4f15a7a324621ec23811643886565545/assets/Mfd0ea53bf924d207a565d74e3b96b8791643953581080/coffee7.jpg",
+      ImageURL: "/images/00072-3933292009.png",
     },
     {
-      Name: "Aloe vera",
+      Name: "Devils Ivy",
       Description: "Don't you dare!",
       DaysToWater: 7,
       Difficulty: difficulty.MODERATE_DIFFICULT,
       Lighting: lighting.IN_BRIGHT_SHADY,
-      ImageURL:
-        "https://s3.amazonaws.com/assets.mockflow.com/app/wireframepro/blockui/Mdca50f8b75d6b4f15a7a324621ec23811643886565545/assets/Mfd0ea53bf924d207a565d74e3b96b8791643953581080/coffee7.jpg",
+      ImageURL: "/images/plants/00065-2713224283.png",
     },
   ];
 
@@ -100,8 +97,8 @@ export default function ImageGrid() {
                   className="w-full h-64 bg-gray-300 dark:bg-gray-700 object-cover rounded-lg shadow"
                   src={plant.ImageURL}
                   alt=""
-                  height={64}
-                  width={64}
+                  height={512}
+                  width={512}
                 />
                 <div className="w-full text-center overflow-hidden py-2">
                   <h3 className="my-2 font-medium text-lg tracking-wide text-gray-800 dark:text-gray-200">
@@ -115,9 +112,9 @@ export default function ImageGrid() {
                   </p>
                   <p className="px-3 text-base">
                     Difficulty:{" "}
-                    <p className={calulateDifficultyColor(plant.Difficulty)}>
+                    {/* <p className={calulateDifficultyColor(plant.Difficulty)}>
                       {plant.Difficulty}
-                    </p>
+                    </p> */}
                   </p>
                   <p className="px-3 text-base">Best for: {plant.Lighting}</p>
                 </div>
