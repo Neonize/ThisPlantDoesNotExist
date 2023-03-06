@@ -52,7 +52,7 @@ export default function ImageGrid() {
       DaysToWater: 7,
       Difficulty: difficulty.MODERATE_DIFFICULT,
       Lighting: lighting.IN_BRIGHT_SHADY,
-      ImageURL: "/images/plants/00065-2713224283.png",
+      ImageURL: "/images/00065-2713224283.png",
     },
   ];
 
