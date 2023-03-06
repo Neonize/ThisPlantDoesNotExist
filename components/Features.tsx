@@ -37,7 +37,7 @@ export default function Features() {
                   className="inline-flex items-center text-white transition-colors duration-800 transform hover:bg-lime-800 bg-lime-700 px-2 py-1 rounded-md"
                 >
                   <span className="font-medium text-sm md:text-base">
-                    Let's customise
+                    Lets customise
                   </span>
                   <svg
                     className="w-4 h-4 ml-1"

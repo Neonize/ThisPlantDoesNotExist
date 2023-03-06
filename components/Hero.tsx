@@ -8,7 +8,7 @@ export default function Hero() {
             imaginary plants
           </h1>
           <p className="text-gray-500 max-w-lg text-base md:text-xl">
-            It's easy to set up and can generate hundreds of high-quality images
+            Its easy to set up and can generate hundreds of high-quality images
             in a day (maybe)
           </p>
         </div>
