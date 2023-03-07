@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Features() {
   return (
     <section className="relative w-full">
@@ -7,7 +9,7 @@ export default function Features() {
         </h1>
         <div className="grid md:grid-cols-3 grid-cols-1 gap-6 md:gap-4 xl:gap-8">
           <div className="flex p-4 rounded-lg">
-            <span className="inline-flex justify-center w-16 h-16 mr-4 p-5 text-lime-600 bg-lime-100 rounded-xl">
+            <span className="inline-flex justify-center w-16 h-16 mr-4 p-5 text-green-600 bg-green-100 rounded-xl">
               <svg
                 className="w-6 h-6"
                 fill="none"
@@ -32,9 +34,9 @@ export default function Features() {
                   You can either generate a complete new plant pure random or
                   tweak the settings to get your personal imaginary plant
                 </p>
-                <a
-                  href="#"
-                  className="inline-flex items-center text-white transition-colors duration-800 transform hover:bg-lime-800 bg-lime-700 px-2 py-1 rounded-md"
+                <Link
+                  href="/generate#custom"
+                  className="inline-flex items-center text-white transition-colors duration-800 transform hover:bg-green-800 bg-green-700 px-2 py-1 rounded-md"
                 >
                   <span className="font-medium text-sm md:text-base">
                     Lets customise
@@ -51,12 +53,12 @@ export default function Features() {
                       clipRule="evenodd"
                     ></path>
                   </svg>
-                </a>
+                </Link>
               </div>
             </div>
           </div>
           <div className="flex p-4 rounded-lg">
-            <span className="inline-flex justify-center w-16 h-16 mr-4 p-5 text-lime-600 bg-lime-100 rounded-xl">
+            <span className="inline-flex justify-center w-16 h-16 mr-4 p-5 text-green-600 bg-green-100 rounded-xl">
               <svg
                 className="w-6 h-6"
                 fill="none"
@@ -83,9 +85,9 @@ export default function Features() {
                   register to see every plant in your profile and even change
                   them afterwards and more!
                 </p>
-                <a
-                  href="#"
-                  className="inline-flex items-center text-white transition-colors duration-800 transform hover:bg-lime-800 bg-lime-700 px-2 py-1 rounded-md"
+                <Link
+                  href="/account"
+                  className="inline-flex items-center text-white transition-colors duration-800 transform hover:bg-green-800 bg-green-700 px-2 py-1 rounded-md"
                 >
                   <span className="font-medium text-sm md:text-base">
                     Find out more
@@ -102,12 +104,12 @@ export default function Features() {
                       clipRule="evenodd"
                     ></path>
                   </svg>
-                </a>
+                </Link>
               </div>
             </div>
           </div>
           <div className="flex p-4 rounded-lg">
-            <span className="inline-flex justify-center w-16 h-16 mr-4 p-5 text-lime-600 bg-lime-100 rounded-xl">
+            <span className="inline-flex justify-center w-16 h-16 mr-4 p-5 text-green-600 bg-green-100 rounded-xl">
               <svg
                 className="w-6 h-6"
                 fill="none"
@@ -132,9 +134,9 @@ export default function Features() {
                   There is no usage cap. Get a free new plant generated whenever
                   you want, wherever you want. Or use our Rest API.
                 </p>
-                <a
-                  href="#"
-                  className="inline-flex items-center text-white transition-colors duration-800 transform hover:bg-lime-800 bg-lime-700 px-2 py-1 rounded-md"
+                <Link
+                  href="/docs"
+                  className="inline-flex items-center text-white transition-colors duration-800 transform hover:bg-green-800 bg-green-700 px-2 py-1 rounded-md"
                 >
                   <span className="font-medium text-sm md:text-base">
                     Read the docs
@@ -151,7 +153,7 @@ export default function Features() {
                       clipRule="evenodd"
                     ></path>
                   </svg>
-                </a>
+                </Link>
               </div>
             </div>
           </div>
