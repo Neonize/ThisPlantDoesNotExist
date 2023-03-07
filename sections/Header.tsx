@@ -48,9 +48,11 @@ export default function Header() {
             width={50}
           />
         </Link>
-        <h1 className="text-3xl tracking-tight font-extrabold max-w-xl leading-tight sm:text-4xl md:text-5xl capitalize">
-          This 🌿 does not exist
-        </h1>
+        <Link href="/">
+          <h1 className="text-3xl tracking-tight font-extrabold max-w-xl leading-tight sm:text-4xl md:text-5xl capitalize">
+            This 🌿 does not exist
+          </h1>
+        </Link>
         {renderThemeChanger()}
       </div>
     </header>
