@@ -25,7 +25,7 @@ export default function Features() {
                 ></path>
               </svg>
             </span>
-            <div className="flex flex-col justify-between items-start space-y-3">
+            <div className="flex flex-col items-start space-y-3">
               <h1 className="text-2xl md:text-3xl font-semibold text-gray-700 dark:text-gray-300">
                 Full random or custom tailored
               </h1>
@@ -74,7 +74,7 @@ export default function Features() {
                 ></path>
               </svg>
             </span>
-            <div className="flex flex-col justify-between items-start space-y-3">
+            <div className="flex flex-col items-start space-y-3">
               <h1 className="text-2xl md:text-3xl font-semibold text-gray-700 dark:text-gray-300">
                 Full history saved
               </h1>
@@ -125,7 +125,7 @@ export default function Features() {
                 ></path>
               </svg>
             </span>
-            <div className="flex flex-col justify-between items-start space-y-3">
+            <div className="flex flex-col items-start space-y-3">
               <h1 className="text-2xl md:text-3xl font-semibold text-gray-700 dark:text-gray-300">
                 Fully free to use
               </h1>
