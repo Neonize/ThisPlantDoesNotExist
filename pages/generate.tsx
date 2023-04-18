@@ -4,6 +4,7 @@ import Image from "next/image";
 import Alert from "@/components/Alert";
 import * as banana from "@banana-dev/banana-dev";
 import { response } from "@/models/model";
+import { useRouter } from "next/router";
 
 const api_key = process.env.API_KEY;
 const model_key = process.env.MODEL_KEY;
@@ -25,36 +26,42 @@ const model_inputs = {
     tiling: false,
   },
 };
-export async function getServerSideProps() {
+export async function getServerSideProps(context: {
+  res: { setHeader: (arg0: string, arg1: string) => void };
+  query: { plantId: any };
+}) {
+  context.res.setHeader(
+    "Cache-Control",
+    "public, s-maxage=10, stale-while-revalidate=59"
+  );
+  const { plantId } = context.query;
   if (api_key === undefined || model_key === undefined) {
     return {
       props: {
         id: "",
         message: "API or MODEL_KEY not provided",
-        created: 0,
-        apiVersion: "",
-        callID: "",
-        finished: false,
-        modelOutputs: [],
       },
     };
   }
   try {
-    const id = await banana.start(api_key, model_key, model_inputs);
+    let id = "";
+    if (!plantId || plantId === "") {
+      id = await banana.start(api_key, model_key, model_inputs);
+    } else {
+      id = plantId;
+    }
     let out = (await banana.check(api_key, id)) as response;
     return {
-      props: out,
+      props: {
+        id: out.id,
+        message: out.message,
+      },
     };
   } catch (error) {
     return {
       props: {
-        id: "",
+        id: plantId,
         message: JSON.stringify(error),
-        created: 0,
-        apiVersion: "string",
-        callID: "string",
-        finished: false,
-        modelOutputs: [],
       },
     };
   }
@@ -62,18 +69,30 @@ export async function getServerSideProps() {
 
 export default function GeneratePage(props: response) {
   const [image, setImage] = useState("");
+  const [buttonDisabled, setbuttonDisabled] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
-    if (props.modelOutputs.length > 0) {
+    if (props.modelOutputs && props.modelOutputs.length > 0) {
       if (props.modelOutputs[0].images.length > 0) {
         setImage(props.modelOutputs[0].images[0]);
       }
     }
+    // Always do navigations after the first render
+    router.push("/generate?plantId=" + props.id, undefined, { shallow: true });
   }, []);
+
+  const generateNew = async () => {
+    setbuttonDisabled(true);
+    router.push("/");
+  };
 
   return (
     <Layout>
       <div className="flex flex-col items-center justify-center gap-4">
+        <button onClick={() => generateNew()} disabled={buttonDisabled}>
+          Generate New
+        </button>
         <p>ID: {props.id}</p>
         {image ? (
           <Image
