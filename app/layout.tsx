@@ -1,0 +1,67 @@
+import Footer from "@/components/Footer";
+import Header from "@/components/Header";
+import HeadElement from "@/components/HeadElement";
+import "@/styles/globals.css";
+
+// export const metadata = {
+//   openGraph: {
+//     title: "This plant does not exist",
+//     url: "https://plant.vmartens.de/",
+//     images: [
+//       {
+//         url: "https://plant.vmartens.de/_next/image?url=%2Fimages%2F00018-2713224236.png&w=640&q=75",
+//         width: 512,
+//         height: 512,
+//       },
+//     ],
+//   },
+//   robots: {
+//     index: true,
+//   },
+//   title: "This plant does not exist",
+//   description: "AI generated plants",
+//   applicationName: "PlantGenerator",
+//   authors: [{ name: "Vincent Martens", url: "https://vmartens.de/" }],
+//   creator: "Vincent Martens",
+//   publisher: "Vincent Martens",
+//   themeColor: [
+//     { media: "(prefers-color-scheme: light)", color: "gray" },
+//     { media: "(prefers-color-scheme: dark)", color: "black" },
+//   ],
+//   twitter: {
+//     card: "summary_large_image",
+//     title: "This plant does not exist",
+//     description: "AI generated plants",
+//     creator: "@vmartensHH",
+//     images: [
+//       "https://plant.vmartens.de/_next/image?url=%2Fimages%2F00018-2713224236.png&w=640&q=75",
+//     ],
+//   },
+//   manifest: 'https://nextjs.org/manifest.json',
+// };
+
+export default function RootLayout({
+  // Layouts must accept a children prop.
+  // This will be populated with nested layouts or pages
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="en">
+      <HeadElement
+        title="This plant does not exist"
+        description="AI generated plants"
+      />
+      <body>
+        <div className="min-h-screen mx-auto max-w-5xl flex flex-col">
+          <Header />
+          <main className="flex-grow container mx-auto px-4 sm:px-6 text-gray-900 dark:text-gray-100">
+            {children}
+          </main>
+          <Footer />
+        </div>
+      </body>
+    </html>
+  );
+}

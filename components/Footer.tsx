@@ -8,12 +8,12 @@ export default function Footer() {
           <div>
             <ul className="flex flex-col md:flex-row items-center justify-center md:space-y-0 space-y-2 md:space-x-10">
               <li>
-                <a
+                <Link
                   href="/about"
                   className="text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100 font-medium"
                 >
                   About
-                </a>
+                </Link>
               </li>
               <li>
                 <a

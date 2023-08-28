@@ -1,3 +1,5 @@
+"use client";
+
 import { useTheme } from "next-themes";
 import { useState, useEffect } from "react";
 import { MoonIcon, SunIcon } from "@heroicons/react/24/solid";
@@ -38,11 +40,11 @@ export default function Header() {
 
   return (
     <header>
-      <div className="container px-4 sm:px-6 py-4 flex flex-row justify-between items-center">
+      <div className="mx-auto container px-4 sm:px-6 py-4 flex flex-row justify-between items-center">
         <Link href="/">
           <Image
             className="rounded-full"
-            src="/Tree.png"
+            src="/icon.png"
             alt=""
             height={50}
             width={50}
