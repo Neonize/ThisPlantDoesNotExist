@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@banana-dev/banana-dev": "^5.0.2",
+    "@banana-dev/banana-dev": "^5.1.0",
     "@heroicons/react": "^2.0.18",
     "@types/node": "20.5.9",
     "@types/react": "18.2.21",
