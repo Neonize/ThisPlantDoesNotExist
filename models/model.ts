@@ -1,13 +1,13 @@
 export type RequestData = {
   id?: string;
-};
+}
 
 export type ResponseData = {
   id: string;
   status: string;
   image: string;
   error: string;
-};
+}
 
 export interface response {
   id: string;
@@ -18,6 +18,7 @@ export interface response {
   finished: boolean;
   modelOutputs: modelOutput[];
 }
+
 export interface modelOutput {
   images: string[];
   parameters: any;

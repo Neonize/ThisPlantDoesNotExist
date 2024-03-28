@@ -4,9 +4,8 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import Alert from "./Alert";
-import { plantData } from "@/models/model";
 
-export default function Plant({ id, message, link }: plantData) {
+export default function Plant({ id, message, link }: { id: string, message: string, link: string }) {
   const [image, setImage] = useState("");
   const [buttonDisabled, setbuttonDisabled] = useState(false);
   const router = useRouter();
@@ -37,8 +36,8 @@ export default function Plant({ id, message, link }: plantData) {
       <p>Message: {message}</p>
       {image ? (
         <Image
-          // src={`data:image/jpeg;base64,${image}`}
-          src={link}
+          src={`data:image/jpeg;base64,${image}`}
+          // src={link}
           alt="generated Image"
           width={768}
           height={768}
