@@ -44,7 +44,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body>
-        <ThemeProvider>
+        <ThemeProvider attribute="class">
           <div className="min-h-screen mx-auto max-w-5xl flex flex-col">
             <Header />
             <main className="flex-grow container mx-auto px-4 sm:px-6 text-gray-900 dark:text-gray-100">
