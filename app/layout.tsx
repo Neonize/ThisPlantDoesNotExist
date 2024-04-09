@@ -1,5 +1,6 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import { ThemeProvider } from 'next-themes'
 import "@/styles/globals.css";
 
 export const metadata = {
@@ -41,16 +42,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body>
-        <div className="min-h-screen mx-auto max-w-5xl flex flex-col">
-          <Header />
-          <main className="flex-grow container mx-auto px-4 sm:px-6 text-gray-900 dark:text-gray-100">
-            {children}
-          </main>
-          <Footer />
-        </div>
+        <ThemeProvider>
+          <div className="min-h-screen mx-auto max-w-5xl flex flex-col">
+            <Header />
+            <main className="flex-grow container mx-auto px-4 sm:px-6 text-gray-900 dark:text-gray-100">
+              {children}
+            </main>
+            <Footer />
+          </div>
+        </ThemeProvider>
       </body>
     </html>
-  );
+  )
 }
