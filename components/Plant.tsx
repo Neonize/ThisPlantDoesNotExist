@@ -20,7 +20,7 @@ export default function Plant({ id, message, link }: { id: string, message: stri
     if (id !== "") {
       router.push("/generate?plantId=" + id);
     }
-  }, [id]);
+  }, [id, router]);
 
   const generateNew = async () => {
     setbuttonDisabled(true);
