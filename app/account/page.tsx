@@ -135,12 +135,14 @@ export default function AccountPage() {
           </p>
         </div>
       </div>
-      <Link
-        href="/user/register"
-        className="w-48 flex mx-auto mt-16 text-white bg-green-500 border-0 py-2 px-8 focus:outline-none hover:bg-green-600 rounded text-lg"
-      >
-        Register now
-      </Link>
+      <div className="flex flex-col text-center w-full mt-16">
+        <Link
+          href="/user/register"
+          className="flex mx-auto text-white bg-green-500 border-0 py-2 px-8 focus:outline-none hover:bg-green-600 rounded text-lg"
+        >
+          Register now
+        </Link>
+      </div>
     </div>
   );
 }

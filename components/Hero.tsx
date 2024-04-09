@@ -17,7 +17,7 @@ export default function Hero() {
         <div className="flex flex-wrap sm:justify-between justify-center items-center gap-x-4 sm:gap-y-0 gap-y-4 mt-4">
           <Link
             href="/generate"
-            className="sm:w-auto select-none inline-flex items-center justify-center px-5 py-3 border border-transparent font-medium rounded-md text-white bg-green-500 md:py-4 md:text-lg"
+            className="sm:w-auto select-none inline-flex items-center justify-center px-5 py-3 border border-transparent font-medium rounded-md text-white bg-green-500 hover:bg-green-700 md:py-4 md:text-lg"
           >
             Get started
           </Link>
