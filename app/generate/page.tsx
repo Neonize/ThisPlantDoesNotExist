@@ -29,20 +29,20 @@ const myClient = new Client(
 )
 
 async function generate(): Promise<{ id: string, message: string, link: string }> {
-  try {
-    const out = await myClient.call("/", model_inputs);
-    return {
-      id: out.json.id,
-      message: out.json.message,
-      link: "",
-    };
-  } catch (error) {
-    return {
-      id: "",
-      message: JSON.stringify(error),
-      link: "",
-    };
-  }
+  // try {
+  //   const out = await myClient.call("/", model_inputs);
+  //   return {
+  //     id: out.json.id,
+  //     message: out.json.message,
+  //     link: "",
+  //   };
+  // } catch (error) {
+  return {
+    id: "",
+    message: "", // JSON.stringify(error),
+    link: "",
+  };
+  // }
 }
 
 export default async function Generate({
