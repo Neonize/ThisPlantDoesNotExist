@@ -1,4 +1,0 @@
-potassium
-transformers
-diffusers[torch]
-huggingface_hub
