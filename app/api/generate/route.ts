@@ -5,18 +5,23 @@ const TOGETHER_API_KEY = process.env.TOGETHER_API_KEY || "";
 
 const together = new Together({ apiKey: TOGETHER_API_KEY });
 
-export async function POST() {
+export async function POST(request: Request) {
   if (!TOGETHER_API_KEY) {
     return NextResponse.json({ error: 'TOGETHER_API_KEY not set' }, { status: 500 });
   }
 
   try {
+    const { customPrompt = "", steps = 4, isSquare = true } = await request.json();
+
+    const basePrompt = "Photograph of a plant, white pot, studio lighting";
+    const fullPrompt = customPrompt ? `${basePrompt}, ${customPrompt}` : basePrompt;
+
     const response = await together.images.create({
       model: "black-forest-labs/FLUX.1-schnell",
-      prompt: "Photograph of a plant, white pot, studio lighting, big leaves, white background",
-      width: 768,
-      height: 768,
-      steps: 4,
+      prompt: fullPrompt,
+      width: isSquare ? 768 : 512,
+      height: isSquare ? 768 : 768,
+      steps: Math.min(Math.max(steps, 1), 8), // Ensure steps is between 1 and 8
       n: 1,
     });
 
