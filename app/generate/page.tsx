@@ -1,66 +1,64 @@
-import Plant from "@/components/Plant";
-import { Client } from "@banana-dev/banana-dev"
+'use client';
 
-const api_key = process.env.API_KEY || ""
-const banana_url = process.env.BANANA_URL || ""
+import { useState, useEffect } from 'react';
+import Image from 'next/image';
 
-const model_inputs = {
-  endpoint: "txt2img",
-  params: {
-    prompt:
-      "Photograph of a plant, white pot, studio lighting, big leaves, white background",
-    negative_prompt: "",
-    steps: 30,
-    sampler_name: "Euler a",
-    cfg_scale: 7.5,
-    seed: Math.floor(Math.random() * 42690),
-    batch_size: 1,
-    n_iter: 1,
-    width: 768,
-    height: 768,
-    tiling: false,
-  },
-}
-
-const myClient = new Client(
-  api_key, // Found in dashboard
-  banana_url, // Found in model view in dashboard
-  // "DEBUG" // verbosity
-)
-
-async function generate(): Promise<{ id: string, message: string, link: string }> {
-  // try {
-  //   const out = await myClient.call("/", model_inputs);
-  //   return {
-  //     id: out.json.id,
-  //     message: out.json.message,
-  //     link: "",
-  //   };
-  // } catch (error) {
-  return {
-    id: "",
-    message: "", // JSON.stringify(error),
-    link: "",
-  };
-  // }
-}
-
-export default async function Generate({
-  searchParams,
-}: {
-  searchParams: { [key: string]: string | string[] | undefined };
-}) {
-  if (api_key === undefined) {
-    return <Plant id={""} message={"API_KEY or MODEL_KEY not set"} link={""} />;
+async function generateImage(): Promise<string> {
+  const response = await fetch('/api/generate', {
+    method: 'POST',
+  });
+  if (!response.ok) {
+    throw new Error('Failed to generate image');
   }
-  let searchId = searchParams.id;
-  if (searchId !== undefined) {
-    let data = { id: "", message: "", link: "" };
-    if (Array.isArray(searchId)) {
-      searchId = searchId[0];
+  const data = await response.json();
+  return data.imageUrl;
+}
+
+export default function Generate() {
+  const [imageUrl, setImageUrl] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  const handleGenerate = async () => {
+    setIsLoading(true);
+    setError(null);
+    try {
+      const url = await generateImage();
+      setImageUrl(url);
+    } catch (err) {
+      setError('Error generating image. Please try again.');
+    } finally {
+      setIsLoading(false);
     }
-    return <Plant id={data.id} message={data.message} link={data.link} />;
-  }
-  const data = await generate();
-  return <Plant id={data.id} message={data.message} link={data.link} />;
+  };
+
+  useEffect(() => {
+    handleGenerate();
+  }, []);
+
+  return (
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4">
+      <h1 className="text-3xl font-bold mb-8">Generated Plant Image</h1>
+      <div className="relative w-96 h-96 rounded-lg overflow-hidden shadow-lg bg-white">
+        {isLoading ? (
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-gray-900"></div>
+          </div>
+        ) : error ? (
+          <div className="absolute inset-0 flex items-center justify-center">
+            <p className="text-red-500 text-xl text-center px-4">{error}</p>
+          </div>
+        ) : imageUrl ? (
+          <Image src={imageUrl} alt="Generated plant" layout="fill" objectFit="cover" />
+        ) : null}
+      </div>
+      <button
+        onClick={handleGenerate}
+        className="mt-8 px-6 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors disabled:bg-gray-400"
+        disabled={isLoading}
+      >
+        {isLoading ? 'Generating...' : 'Generate New Image'}
+      </button>
+    </div>
+  );
 }
