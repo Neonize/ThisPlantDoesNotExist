@@ -1,62 +1,46 @@
-"use client";
+'use client'
 
-import { useTheme } from "next-themes";
-import { useState, useEffect } from "react";
-import { MoonIcon, SunIcon } from "@heroicons/react/24/solid";
-import Link from "next/link";
-import Image from "next/image";
+import { useTheme } from 'next-themes'
+import { useEffect, useState } from 'react'
+import Link from 'next/link'
 
 export default function Header() {
-  const { systemTheme, theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
+  const [mounted, setMounted] = useState(false)
+  const { theme, setTheme } = useTheme()
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  useEffect(() => setMounted(true), [])
 
-  const renderThemeChanger = () => {
-    if (!mounted) return null;
-
-    const currentTheme = theme === "system" ? systemTheme : theme;
-
-    if (currentTheme === "dark") {
-      return (
-        <SunIcon
-          className="w-10 h-10 text-yellow-500 "
-          role="button"
-          onClick={() => setTheme("light")}
-        />
-      );
-    } else {
-      return (
-        <MoonIcon
-          className="w-10 h-10"
-          role="button"
-          onClick={() => setTheme("dark")}
-        />
-      );
-    }
-  };
+  if (!mounted) return null
 
   return (
-    <header>
-      <div className="mx-auto container px-4 sm:px-6 py-4 flex flex-row justify-between items-center">
-        <Link href="/">
-          <Image
-            className="rounded-full"
-            src="/icon.png"
-            alt=""
-            height={50}
-            width={50}
-          />
+    <header className="bg-white dark:bg-gray-800 shadow-md">
+      <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+        <Link href="/" className="text-2xl font-bold text-green-600 dark:text-green-400">
+          This Plant Does Not Exist
         </Link>
-        <Link href="/">
-          <h1 className="text-3xl tracking-tight font-extrabold max-w-xl leading-tight sm:text-4xl md:text-5xl capitalize">
-            This 🌿 does not exist
-          </h1>
-        </Link>
-        {renderThemeChanger()}
+        <nav>
+          <ul className="flex space-x-4">
+            <li>
+              <Link href="/generate" className="text-gray-600 dark:text-gray-300 hover:text-green-600 dark:hover:text-green-400">
+                Generate
+              </Link>
+            </li>
+            <li>
+              <Link href="/about" className="text-gray-600 dark:text-gray-300 hover:text-green-600 dark:hover:text-green-400">
+                About
+              </Link>
+            </li>
+            <li>
+              <button
+                onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+                className="text-gray-600 dark:text-gray-300 hover:text-green-600 dark:hover:text-green-400"
+              >
+                {theme === 'dark' ? '🌞' : '🌙'}
+              </button>
+            </li>
+          </ul>
+        </nav>
       </div>
     </header>
-  );
+  )
 }

@@ -1,57 +1,28 @@
-import Footer from "@/components/Footer";
-import Header from "@/components/Header";
+import '/styles/globals.css'
+import { Inter } from 'next/font/google'
 import { ThemeProvider } from 'next-themes'
-import "@/styles/globals.css";
+import Header from '@/components/Header'
+
+const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
-  openGraph: {
-    title: "This plant does not exist",
-    url: "https://plant.vmartens.de/",
-    images: [
-      {
-        url: "https://plant.vmartens.de/_next/image?url=%2Fimages%2F00018-2713224236.png&w=640&q=75",
-        width: 512,
-        height: 512,
-      },
-    ],
-  },
-  robots: {
-    index: true,
-  },
-  title: "This plant does not exist",
-  description: "AI generated plants",
-  applicationName: "PlantGenerator",
-  authors: [{ name: "Vincent Martens", url: "https://vmartens.de/" }],
-  creator: "Vincent Martens",
-  publisher: "Vincent Martens",
-  twitter: {
-    card: "summary_large_image",
-    title: "This plant does not exist",
-    description: "AI generated plants",
-    creator: "@vmartensHH",
-    images: [
-      "https://plant.vmartens.de/_next/image?url=%2Fimages%2F00018-2713224236.png&w=640&q=75",
-    ],
-  },
-  manifest: 'https://nextjs.org/manifest.json',
-};
+  title: 'This Plant Does Not Exist',
+  description: 'Generate unique, AI-created plant images',
+}
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body>
-        <ThemeProvider attribute="class">
-          <div className="min-h-screen mx-auto max-w-5xl flex flex-col">
-            <Header />
-            <main className="flex-grow container mx-auto px-4 sm:px-6 text-gray-900 dark:text-gray-100">
-              {children}
-            </main>
-            <Footer />
-          </div>
+      <body className={`${inter.className} bg-white dark:bg-gray-900 text-gray-900 dark:text-white`}>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <Header />
+          <main className="container mx-auto px-4 py-8">
+            {children}
+          </main>
         </ThemeProvider>
       </body>
     </html>
