@@ -17,7 +17,7 @@ export async function POST(request: Request) {
     const fullPrompt = customPrompt ? `${basePrompt}, ${customPrompt}` : basePrompt;
 
     const response = await together.images.create({
-      model: "black-forest-labs/FLUX.1-schnell",
+      model: "black-forest-labs/FLUX.1-schnell-Free",
       prompt: fullPrompt,
       width: isSquare ? 768 : 512,
       height: isSquare ? 768 : 768,
