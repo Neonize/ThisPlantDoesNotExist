@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Image from 'next/image';
+import Image from "next/legacy/image";
 
 async function generateImage(customPrompt: string, steps: number, isSquare: boolean): Promise<string> {
   const response = await fetch('/api/generate', {
