@@ -69,7 +69,7 @@ export default function Generate() {
             }} />
         ) : (
           <div className="absolute inset-0 flex items-center justify-center">
-            <p className="text-gray-500 text-xl text-center px-4">Click "Generate New Image" to create a plant image</p>
+            <p className="text-gray-500 text-xl text-center px-4">Click &quot;Generate New Image&quot; to create a plant image</p>
           </div>
         )}
       </div>

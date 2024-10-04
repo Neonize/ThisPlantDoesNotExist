@@ -8,14 +8,14 @@ export default function Explanation() {
       <section className="mb-8">
         <h2 className="text-2xl font-semibold mb-4">What is This Plant Does Not Exist?</h2>
         <p className="mb-4">
-          This Plant Does Not Exist is an innovative project that uses artificial intelligence to generate unique, non-existent plants. Inspired by projects like ThisPersonDoesNotExist, our goal is to create a fascinating exploration of botanical possibilities that don't exist in nature.
+          This Plant Does Not Exist is an innovative project that uses artificial intelligence to generate unique, non-existent plants. Inspired by projects like ThisPersonDoesNotExist, our goal is to create a fascinating exploration of botanical possibilities that don&apos;t exist in nature.
         </p>
       </section>
 
       <section className="mb-8">
         <h2 className="text-2xl font-semibold mb-4">How Does It Work?</h2>
         <p className="mb-4">
-          Our project utilizes advanced machine learning algorithms, specifically Generative Adversarial Networks (GANs), to create images of plants that look realistic but are entirely artificial. The AI has been trained on a vast database of real plant images, learning to generate new, unique plant designs that maintain botanical plausibility while pushing the boundaries of nature's designs.
+          Our project utilizes advanced machine learning algorithms, specifically Generative Adversarial Networks (GANs), to create images of plants that look realistic but are entirely artificial. The AI has been trained on a vast database of real plant images, learning to generate new, unique plant designs that maintain botanical plausibility while pushing the boundaries of nature&apos;s designs.
         </p>
       </section>
 

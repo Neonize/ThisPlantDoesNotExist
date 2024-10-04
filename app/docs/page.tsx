@@ -27,7 +27,7 @@ export default function DocsPage() {
           <div className="space-y-4">
             <h2 className="text-2xl font-bold tracking-tight">2. Generate Image</h2>
             <p className="text-gray-500 md:text-xl/relaxed xl:text-base/relaxed dark:text-gray-400">
-              Once you're satisfied with your settings, click the "Generate Image" button to create your image.
+              Once you&apos;re satisfied with your settings, click the &quot;Generate Image&quot; button to create your image.
             </p>
             <Image
               alt="Generate Image"
