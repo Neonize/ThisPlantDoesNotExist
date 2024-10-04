@@ -49,7 +49,7 @@ export default function Generate() {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-900 p-4">
       <h1 className="text-3xl font-bold mb-8">Generated Plant Image</h1>
-      <div className="relative w-96 h-96 rounded-lg overflow-hidden shadow-lg bg-white">
+      <div className="relative w-96 h-96 md:w-[384px] md:h-[384px] rounded-lg overflow-hidden shadow-lg bg-white">
         {isLoading ? (
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-gray-900"></div>
@@ -63,7 +63,7 @@ export default function Generate() {
             src={imageUrl}
             alt="Generated plant"
             fill
-            sizes="100vw"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             style={{
               objectFit: "cover"
             }} />
