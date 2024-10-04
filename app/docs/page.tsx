@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function DocsPage() {
   return (
     <div className="w-full py-12 space-y-6 md:py-24">
@@ -14,7 +16,7 @@ export default function DocsPage() {
             <p className="text-gray-500 md:text-xl/relaxed xl:text-base/relaxed dark:text-gray-400">
               Start by entering your plant description in the input field.
             </p>
-            <img
+            <Image
               alt="Input Text"
               className="mx-auto rounded-lg overflow-hidden object-cover object-center aspect-video sm:w-full md:order-last"
               height="304"
@@ -27,7 +29,7 @@ export default function DocsPage() {
             <p className="text-gray-500 md:text-xl/relaxed xl:text-base/relaxed dark:text-gray-400">
               Once you're satisfied with your settings, click the "Generate Image" button to create your image.
             </p>
-            <img
+            <Image
               alt="Generate Image"
               className="mx-auto rounded-lg overflow-hidden object-cover object-center aspect-video sm:w-full"
               height="304"
