@@ -22,19 +22,6 @@ export default function DocsPage() {
               width="540"
             />
           </div>
-          {/* <div className="space-y-4">
-            <h2 className="text-2xl font-bold tracking-tight">2. Select Styles</h2>
-            <p className="text-gray-500 md:text-xl/relaxed xl:text-base/relaxed dark:text-gray-400">
-              Choose from various styles, including different fonts, weights, and decorations to customize your text.
-            </p>
-          </div>
-          <img
-            alt="Select Styles"
-            className="mx-auto rounded-lg overflow-hidden object-cover object-center aspect-video sm:w-full"
-            height="304"
-            src="/placeholder.svg"
-            width="540"
-          /> */}
           <div className="space-y-4">
             <h2 className="text-2xl font-bold tracking-tight">2. Generate Image</h2>
             <p className="text-gray-500 md:text-xl/relaxed xl:text-base/relaxed dark:text-gray-400">
