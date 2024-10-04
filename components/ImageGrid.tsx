@@ -1,6 +1,6 @@
 "use-client";
 
-import Image from "next/legacy/image";
+import Image from "next/image";
 
 export enum difficulty {
   EASY = "Very easy",
@@ -101,7 +101,10 @@ export default function ImageGrid() {
                   alt=""
                   height={512}
                   width={512}
-                />
+                  style={{
+                    maxWidth: "100%",
+                    height: "auto"
+                  }} />
                 <div className="w-full text-center overflow-hidden py-2">
                   <h3 className="my-2 font-medium text-lg tracking-wide text-gray-800 dark:text-gray-200">
                     {plant.Name}

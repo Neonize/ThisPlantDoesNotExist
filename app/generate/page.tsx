@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Image from "next/legacy/image";
+import Image from "next/image";
 
 async function generateImage(customPrompt: string, steps: number, isSquare: boolean): Promise<string> {
   const response = await fetch('/api/generate', {
@@ -59,7 +59,14 @@ export default function Generate() {
             <p className="text-red-500 text-xl text-center px-4">{error}</p>
           </div>
         ) : imageUrl ? (
-          <Image src={imageUrl} alt="Generated plant" layout="fill" objectFit="cover" />
+          <Image
+            src={imageUrl}
+            alt="Generated plant"
+            fill
+            sizes="100vw"
+            style={{
+              objectFit: "cover"
+            }} />
         ) : (
           <div className="absolute inset-0 flex items-center justify-center">
             <p className="text-gray-500 text-xl text-center px-4">Click "Generate New Image" to create a plant image</p>

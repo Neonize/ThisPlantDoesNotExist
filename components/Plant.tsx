@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import { useState, useEffect } from "react";
 import Alert from "./Alert";
 
@@ -41,7 +41,10 @@ export default function Plant({ id, message, link }: { id: string, message: stri
           alt="generated Image"
           width={768}
           height={768}
-        />
+          style={{
+            maxWidth: "100%",
+            height: "auto"
+          }} />
       ) : (
         <div className="text-thin tracking-wider">Loading...</div>
       )}
