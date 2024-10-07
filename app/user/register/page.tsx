@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Why from './why';
 import Link from 'next/link';
+import { supabase } from '@/app/lib/supabase';
 
 export default function RegisterPage() {
   const [email, setEmail] = useState('');
@@ -15,19 +16,17 @@ export default function RegisterPage() {
     e.preventDefault();
     setError('');
 
-    const response = await fetch('/api/auth/register', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, password }),
+    const { data, error } = await supabase.auth.signUp({
+      email,
+      password,
     });
 
-    const data = await response.json();
-
-    if (response.ok) {
+    if (error) {
+      setError(error.message);
+    } else {
       // Redirect to login page after successful registration
       router.push('/user/login');
-    } else {
-      setError(data.error || 'An error occurred during registration');
+      router.refresh(); // This will trigger a re-render of the entire app, including the Header
     }
   };
 

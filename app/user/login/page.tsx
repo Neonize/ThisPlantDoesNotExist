@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { supabase } from '@/app/lib/supabase';
 import Link from 'next/link';
 
 export default function LoginPage() {
@@ -14,19 +15,16 @@ export default function LoginPage() {
     e.preventDefault();
     setError('');
 
-    const response = await fetch('/api/auth/login', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, password }),
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email,
+      password,
     });
 
-    const data = await response.json();
-
-    if (response.ok) {
-      // Redirect to home page or dashboard
-      router.push('/');
+    if (error) {
+      setError(error.message);
     } else {
-      setError(data.error || 'An error occurred during login');
+      router.push('/');
+      router.refresh(); // This will trigger a re-render of the entire app, including the Header
     }
   };
 
