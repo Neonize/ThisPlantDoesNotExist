@@ -42,7 +42,7 @@ export default function Header() {
           This Plant Does Not Exist
         </Link>
         <nav className='grow'>
-          <ul className="grid grid-cols-3 md:grid-cols-6 gap-2 md:gap-0 justify-items-center justify-between">
+          <ul className="grid grid-cols-3 md:grid-cols-max gap-2 md:gap-4 justify-items-center">
             <li>
               <Link href="/generate" className="text-gray-600 dark:text-gray-300 hover:text-green-600 dark:hover:text-green-400">
                 Generate
