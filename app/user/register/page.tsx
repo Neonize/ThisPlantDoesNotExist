@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Why from './why';
+import Link from 'next/link';
 
 export default function RegisterPage() {
   const [email, setEmail] = useState('');
@@ -70,7 +71,7 @@ export default function RegisterPage() {
             </button>
           </form>
           <p className="mt-4 text-gray-600 dark:text-gray-400">
-            Already have an account? <a href="/user/login" className="text-green-500 hover:text-green-600">Login instead</a>
+            Already have an account? <Link href="/user/login" className="text-green-500 hover:text-green-600">Login instead</Link>
           </p>
         </div>
       </div>
