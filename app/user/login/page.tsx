@@ -1,48 +1,75 @@
+'use client';
+
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+
 export default function LoginPage() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const router = useRouter();
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError('');
+
+    const response = await fetch('/api/auth/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password }),
+    });
+
+    const data = await response.json();
+
+    if (response.ok) {
+      // Redirect to home page or dashboard
+      router.push('/');
+    } else {
+      setError(data.error || 'An error occurred during login');
+    }
+  };
+
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 body-font container px-5 py-24 mx-auto gap-4">
-      <div className="lg:w-4/6 md:w-1/2 bg-gray-100 p-8 justify-center rounded-lg flex flex-col mt-10 md:mt-0">
-        <h1 className="text-center sm:text-3xl text-2xl font-medium title-font mb-12">
+    <div className="grid grid-cols-1 body-font container px-5 py-24 mx-auto gap-4">
+      <div className="md:w-1/2 bg-gray-100 dark:bg-gray-800 p-8 mx-auto justify-center rounded-lg flex flex-col mt-10 md:mt-0">
+        <h1 className="text-center sm:text-3xl text-2xl font-medium title-font mb-12 text-gray-900 dark:text-white">
           Login
         </h1>
-        <div className="flex lg:w-2/3 w-full flex-col mx-auto px-8 sm:space-x-4 sm:space-y-0 space-y-4 sm:px-0 items-end">
+        <form onSubmit={handleSubmit} className="flex lg:w-2/3 w-full flex-col mx-auto px-8 sm:space-x-4 sm:space-y-0 space-y-4 sm:px-0 items-end">
+          {error && <p className="text-red-500 dark:text-red-400 text-sm mb-4 w-full">{error}</p>}
           <div className="relative flex-grow w-full">
-            <label
-              htmlFor="full-name"
-              className="leading-7 text-sm text-gray-600"
-            >
-              Name
-            </label>
-            <input
-              type="text"
-              id="full-name"
-              name="full-name"
-              className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-green-500 focus:bg-transparent focus:ring-2 focus:ring-green-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-              data-twofas-input-listener="true"
-            />
-          </div>
-          <div className="relative flex-grow w-full">
-            <label htmlFor="email" className="leading-7 text-sm text-gray-600">
-              Password
+            <label htmlFor="email" className="leading-7 text-sm text-gray-600 dark:text-gray-400">
+              Email
             </label>
             <input
               type="email"
               id="email"
-              name="email"
-              className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-green-500 focus:bg-transparent focus:ring-2 focus:ring-green-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-              data-twofas-input-listener="true"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="w-full bg-white dark:bg-gray-700 bg-opacity-50 rounded border border-gray-300 dark:border-gray-600 focus:border-green-500 focus:bg-transparent focus:ring-2 focus:ring-green-200 text-base outline-none text-gray-700 dark:text-gray-300 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+              required
             />
           </div>
-          <button className="text-white bg-green-500 border-0 py-2 px-8 focus:outline-none hover:bg-green-600 rounded text-lg">
+          <div className="relative flex-grow w-full">
+            <label htmlFor="password" className="leading-7 text-sm text-gray-600 dark:text-gray-400">
+              Password
+            </label>
+            <input
+              type="password"
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="w-full bg-white dark:bg-gray-700 bg-opacity-50 rounded border border-gray-300 dark:border-gray-600 focus:border-green-500 focus:bg-transparent focus:ring-2 focus:ring-green-200 text-base outline-none text-gray-700 dark:text-gray-300 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+              required
+            />
+          </div>
+          <button type="submit" className="text-white bg-green-500 border-0 py-2 px-8 focus:outline-none hover:bg-green-600 rounded text-lg">
             Login
           </button>
-          <button className="text-white bg-green-500 border-0 py-2 px-8 focus:outline-none hover:bg-green-600 rounded text-lg">
-            Social Login
-          </button>
-        </div>
+        </form>
       </div>
-      <div className="lg:w-4/6 md:w-1/2 bg-gray-100 p-8 justify-center rounded-lg flex flex-col w-full mt-10 md:mt-0">
-        Sign up instead
+      <div className="md:w-1/2 bg-gray-100 dark:bg-gray-800 p-8 mx-auto justify-center rounded-lg flex flex-col w-full mt-10 md:mt-0">
+        <p className="text-gray-900 dark:text-white">Don't have an account? <a href="/user/register" className="text-green-500 hover:text-green-600">Sign up instead</a></p>
       </div>
     </div>
   );
