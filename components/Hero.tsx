@@ -6,7 +6,7 @@ export default function Hero() {
       <div className="max-w-7xl mx-auto flex flex-col items-center justify-center px-6 py-8">
         <div className="flex flex-col items-center text-center">
           <h1 className="text-3xl tracking-tight font-extrabold max-w-xl leading-tight sm:text-4xl md:text-5xl">
-            ... is an AI accelerated website that generates you images and text
+            ... is an AI accelerated website that generates you images
             of imaginary plants
           </h1>
           <p className="text-gray-500 max-w-lg text-base md:text-xl">

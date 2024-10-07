@@ -1,8 +1,9 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function DocsPage() {
   return (
-    <div className="w-full py-12 space-y-6 md:py-24">
+    <div className="max-w-5xl py-6 space-y-6 md:py-24 mx-auto">
       <div className="container space-y-4 px-4 md:px-6">
         <div className="space-y-2">
           <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl">Using the Image Generator</h1>
@@ -38,6 +39,12 @@ export default function DocsPage() {
             />
           </div>
         </div>
+        <Link
+          href="/generate"
+          className="sm:w-auto select-none inline-flex items-center justify-center px-5 py-3 border border-transparent font-medium rounded-md text-white bg-green-500 hover:bg-green-700 md:py-4 md:text-lg"
+        >
+          Get started
+        </Link>
       </div>
     </div>
   )

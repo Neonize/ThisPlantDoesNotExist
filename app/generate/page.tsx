@@ -47,7 +47,7 @@ export default function Generate() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-900 p-4">
+    <div className="flex flex-col items-center justify-center bg-gray-100 dark:bg-gray-900 p-4">
       <h1 className="text-3xl font-bold mb-8">Generated Plant Image</h1>
       <div className="relative w-96 h-96 md:w-[384px] md:h-[384px] rounded-lg overflow-hidden shadow-lg bg-white">
         {isLoading ? (
