@@ -68,7 +68,7 @@ export default function LoginPage() {
         </form>
       </div>
       <div className="md:w-1/2 bg-gray-100 dark:bg-gray-800 p-8 mx-auto justify-center rounded-lg flex flex-col w-full mt-10 md:mt-0">
-        <p className="text-gray-900 dark:text-white">Don't have an account? <Link href="/user/register" className="text-green-500 hover:text-green-600">Sign up instead</Link></p>
+        <p className="text-gray-900 dark:text-white">Don&apos;t have an account? <Link href="/user/register" className="text-green-500 hover:text-green-600">Sign up instead</Link></p>
       </div>
     </div>
   );
