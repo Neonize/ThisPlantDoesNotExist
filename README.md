@@ -1,5 +1,7 @@
 # This Plant Does Not Exist
 
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FNeonize%2FThisPlantDoesNotExist%2F&env=TOGETHER_API_KEY,NEXT_PUBLIC_SUPABASE_URL,NEXT_PUBLIC_SUPABASE_ANON_KEY,ANONYMOUS_USER_ID&envDescription=API%20Keys%20needed%20for%20storage%20and%20image%20generation&envLink=https%3A%2F%2Fapi.together.xyz%2F&demo-title=ThisPlantDoesNotExist&demo-description=AI%20generated%20plants%20with%20Flux-schnell&demo-url=https%3A%2F%2Fplant.vmartens.de%2F&demo-image=https%3A%2F%2Fgithub.com%2FNeonize%2FThisPlantDoesNotExist%2Fblob%2Fmain%2Fscreenshot.png%3Fraw%3Dtrue)
+
 This Plant Does Not Exist is an innovative project that uses artificial intelligence to generate unique, non-existent plants. Inspired by projects like ThisPersonDoesNotExist, our goal is to create a fascinating exploration of botanical possibilities that don't exist in nature.
 
 ## Features
