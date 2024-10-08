@@ -106,7 +106,7 @@ export default function Generate() {
             <input
               type="range"
               min="1"
-              max="8"
+              max="4"
               value={steps}
               onChange={(e) => setSteps(Number(e.target.value))}
               className="w-full"
