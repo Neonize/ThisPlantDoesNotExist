@@ -86,7 +86,7 @@ export default function Features() {
                   them afterwards and more!
                 </p>
                 <Link
-                  href="/account"
+                  href="/user/register"
                   className="inline-flex items-center text-white transition-colors duration-800 transform hover:bg-green-800 bg-green-700 px-2 py-1 rounded-md"
                 >
                   <span className="font-medium text-sm md:text-base">
