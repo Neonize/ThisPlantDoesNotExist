@@ -1,5 +1,7 @@
 import { NextResponse } from 'next/server';
 import Together from "together-ai";
+import { createRouteHandlerClient } from '@supabase/auth-helpers-nextjs';
+import { cookies } from 'next/headers';
 
 const TOGETHER_API_KEY = process.env.TOGETHER_API_KEY || "";
 
@@ -10,8 +12,10 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: 'TOGETHER_API_KEY not set' }, { status: 500 });
   }
 
+  const supabase = createRouteHandlerClient({ cookies });
+
   try {
-    const { customPrompt = "", steps = 4, isSquare = true } = await request.json();
+    const { customPrompt = "", steps = 4, isSquare = true, userId = null } = await request.json();
 
     const basePrompt = "Photograph of a plant, white pot, studio lighting";
     const fullPrompt = customPrompt ? `${basePrompt}, ${customPrompt}` : basePrompt;
@@ -33,6 +37,26 @@ export async function POST(request: Request) {
 
     if (typeof imageData.url !== 'string') {
       throw new Error("Image URL not found in API response");
+    }
+
+    // If userId is provided, save the generated image data to Supabase
+    if (userId) {
+      const { data, error } = await supabase
+        .from('generated_images')
+        .insert({
+          user_id: userId,
+          image_url: imageData.url,
+          settings: {
+            customPrompt,
+            steps,
+            isSquare
+          }
+        });
+
+      if (error) {
+        console.error("Error saving image data to Supabase:", error);
+        // We'll still return the image URL even if saving to Supabase fails
+      }
     }
 
     return NextResponse.json({ imageUrl: imageData.url });
