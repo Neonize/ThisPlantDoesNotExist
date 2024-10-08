@@ -4,6 +4,7 @@ import { createRouteHandlerClient } from '@supabase/auth-helpers-nextjs';
 import { cookies } from 'next/headers';
 
 const TOGETHER_API_KEY = process.env.TOGETHER_API_KEY || "";
+const ANONYMOUS_USER_ID = process.env.ANONYMOUS_USER_ID || "anonymous";
 
 const together = new Together({ apiKey: TOGETHER_API_KEY });
 
@@ -39,24 +40,24 @@ export async function POST(request: Request) {
       throw new Error("Image URL not found in API response");
     }
 
-    // If userId is provided, save the generated image data to Supabase
-    if (userId) {
-      const { data, error } = await supabase
-        .from('generated_images')
-        .insert({
-          user_id: userId,
-          image_url: imageData.url,
-          settings: {
-            customPrompt,
-            steps,
-            isSquare
-          }
-        });
+    // Use the provided userId or the anonymous user ID
+    const userIdToSave = userId || ANONYMOUS_USER_ID;
 
-      if (error) {
-        console.error("Error saving image data to Supabase:", error);
-        // We'll still return the image URL even if saving to Supabase fails
-      }
+    const { data, error } = await supabase
+      .from('generated_images')
+      .insert({
+        user_id: userIdToSave,
+        image_url: imageData.url,
+        settings: {
+          customPrompt,
+          steps
+        },
+        is_public: !userId // Set is_public to true for anonymous generations
+      });
+
+    if (error) {
+      console.error("Error saving image data to Supabase:", error);
+      // We'll still return the image URL even if saving to Supabase fails
     }
 
     return NextResponse.json({ imageUrl: imageData.url });

@@ -23,7 +23,7 @@ export default function LoginPage() {
     if (error) {
       setError(error.message);
     } else {
-      router.push('/');
+      router.push('/account');
       router.refresh(); // This will trigger a re-render of the entire app, including the Header
     }
   };
