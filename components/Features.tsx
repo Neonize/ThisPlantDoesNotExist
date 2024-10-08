@@ -132,7 +132,7 @@ export default function Features() {
               <div className="space-y-4">
                 <p className="text-gray-500 text-sm md:text-base">
                   There is no usage cap. Get a free new plant generated whenever
-                  you want, wherever you want. Or use our Rest API.
+                  you want, wherever you want.
                 </p>
                 <Link
                   href="/docs"
