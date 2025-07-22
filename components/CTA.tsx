@@ -6,7 +6,7 @@ export default function CTA() {
           <span>Want to get notified over funny projects in the future?</span>
           <span className="block text-green-600">Join my newsletter</span>
         </h2>
-        <div className="flex flex-wrap justify-center lg:mt-0 lg:flex-shrink-0 sm:justify-start gap-x-4 sm:gap-y-0 gap-y-4">
+        <div className="flex flex-wrap justify-center lg:mt-0 lg:shrink-0 sm:justify-start gap-x-4 sm:gap-y-0 gap-y-4">
           <a
             href="#"
             className="select-none inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-green-600 hover:bg-green-800"

@@ -2,7 +2,7 @@ export default function About() {
   return (
     <>
       <a href="https://vmartens.de">
-        <div className="container max-w-screen-md p-8 py-4 mx-auto items-center flex flex-col">
+        <div className="container max-w-(--breakpoint-md) p-8 py-4 mx-auto items-center flex flex-col">
           <h2 className="font-medium text-3xl">
             Hi i am Vincent, aka Neonize 👋
           </h2>

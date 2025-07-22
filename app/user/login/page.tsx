@@ -36,7 +36,7 @@ export default function LoginPage() {
         </h1>
         <form onSubmit={handleSubmit} className="flex lg:w-2/3 w-full flex-col mx-auto px-8 sm:space-x-4 sm:space-y-0 space-y-4 sm:px-0 items-end">
           {error && <p className="text-red-500 dark:text-red-400 text-sm mb-4 w-full">{error}</p>}
-          <div className="relative flex-grow w-full">
+          <div className="relative grow w-full">
             <label htmlFor="email" className="leading-7 text-sm text-gray-600 dark:text-gray-400">
               Email
             </label>
@@ -49,7 +49,7 @@ export default function LoginPage() {
               required
             />
           </div>
-          <div className="relative flex-grow w-full">
+          <div className="relative grow w-full">
             <label htmlFor="password" className="leading-7 text-sm text-gray-600 dark:text-gray-400">
               Password
             </label>
