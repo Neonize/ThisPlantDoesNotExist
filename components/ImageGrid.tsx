@@ -1,8 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import Image from "next/image";
-import { supabase } from '@/app/lib/supabase';
 
 interface GeneratedImage {
   id: string;
@@ -10,32 +8,69 @@ interface GeneratedImage {
   settings: {
     customPrompt: string;
     steps: number;
-    isSquare: boolean;
   };
   created_at: string;
 }
 
+// Static example images to showcase the app's capabilities
+const staticImages: GeneratedImage[] = [
+  {
+    id: "1",
+    image_url: "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=512&h=512&fit=crop&crop=center",
+    settings: {
+      customPrompt: "succulent with purple leaves",
+      steps: 4
+    },
+    created_at: "2024-01-15"
+  },
+  {
+    id: "2",
+    image_url: "https://images.unsplash.com/photo-1485955900006-10f4d324d411?w=512&h=512&fit=crop&crop=center",
+    settings: {
+      customPrompt: "tropical plant with large green leaves",
+      steps: 4
+    },
+    created_at: "2024-01-14"
+  },
+  {
+    id: "3",
+    image_url: "https://images.unsplash.com/photo-1459411621453-7b03977f4bfc?w=512&h=512&fit=crop&crop=center",
+    settings: {
+      customPrompt: "small flowering cactus",
+      steps: 4
+    },
+    created_at: "2024-01-13"
+  },
+  {
+    id: "4",
+    image_url: "https://images.unsplash.com/photo-1463320726281-696a485928c7?w=512&h=512&fit=crop&crop=center",
+    settings: {
+      customPrompt: "hanging plant with trailing vines",
+      steps: 4
+    },
+    created_at: "2024-01-12"
+  },
+  {
+    id: "5",
+    image_url: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=512&h=512&fit=crop&crop=center",
+    settings: {
+      customPrompt: "snake plant with yellow edges",
+      steps: 4
+    },
+    created_at: "2024-01-11"
+  },
+  {
+    id: "6",
+    image_url: "https://images.unsplash.com/photo-1545241047-6083a3684587?w=512&h=512&fit=crop&crop=center",
+    settings: {
+      customPrompt: "monstera plant with split leaves",
+      steps: 4
+    },
+    created_at: "2024-01-10"
+  }
+];
+
 export default function ImageGrid() {
-  const [publicImages, setPublicImages] = useState<GeneratedImage[]>([]);
-
-  useEffect(() => {
-    const fetchPublicImages = async () => {
-      const { data, error } = await supabase
-        .from('generated_images')
-        .select('*')
-        .eq('is_public', true)
-        .order('created_at', { ascending: false })
-        .limit(6);
-
-      if (error) {
-        console.error('Error fetching public images:', error);
-      } else {
-        setPublicImages(data as GeneratedImage[]);
-      }
-    };
-
-    fetchPublicImages();
-  }, []);
 
   return (
     <section className="relative w-full">
@@ -49,7 +84,7 @@ export default function ImageGrid() {
           </p>
         </div>
         <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6 place-items-center">
-          {publicImages.map((image) => (
+          {staticImages.map((image) => (
             <div
               key={image.id}
               className="flex flex-col items-center justify-center max-w-sm p-4 rounded-lg shadow-md bg-gray-100 dark:bg-gray-900"

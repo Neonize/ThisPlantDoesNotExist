@@ -76,21 +76,20 @@ export default function Features() {
             </span>
             <div className="flex flex-col items-start space-y-3">
               <h1 className="text-2xl md:text-3xl font-semibold text-gray-700 dark:text-gray-300">
-                Full history saved
+                Instant Generation
               </h1>
               <div className="space-y-4">
                 <p className="text-gray-500 text-sm md:text-base">
-                  Every plant you generate will stay online and can be accessed
-                  with a personal deeplink. You forgot your link? Why not
-                  register to see every plant in your profile and even change
-                  them afterwards and more!
+                  Generate unique plant images instantly with no account required.
+                  Each generation creates a completely new, AI-designed plant that
+                  has never existed before.
                 </p>
                 <Link
-                  href="/user/register"
+                  href="/generate"
                   className="inline-flex items-center text-white transition-colors duration-800 transform hover:bg-green-800 bg-green-700 px-2 py-1 rounded-md"
                 >
                   <span className="font-medium text-sm md:text-base">
-                    Find out more
+                    Start generating
                   </span>
                   <svg
                     className="w-4 h-4 ml-1"

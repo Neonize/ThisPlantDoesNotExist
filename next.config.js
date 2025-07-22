@@ -10,6 +10,11 @@ const nextConfig = {
         protocol: "https",
         hostname: "api.together.ai",
         pathname: "/imgproxy/**",
+      },
+      {
+        protocol: "https",
+        hostname: "api.together.ai",
+        pathname: "/shrt/**"
       }
     ],
   },

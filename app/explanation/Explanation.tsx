@@ -14,16 +14,22 @@ export default function Explanation() {
         <section className="bg-white dark:bg-gray-800 shadow-md dark:shadow-gray-700 rounded-lg p-6">
           <h2 className="text-2xl font-semibold mb-4 dark:text-white">How Does It Work?</h2>
           <p className="mb-4 dark:text-gray-300">
-            Our project utilizes advanced machine learning algorithms, specifically Generative Adversarial Networks (GANs), to create images of plants that look realistic but are entirely artificial. The AI has been trained on a vast database of real plant images, learning to generate new, unique plant designs that maintain botanical plausibility while pushing the boundaries of nature&apos;s designs.
+            Our project uses the FLUX.1-schnell model from Black Forest Labs via Together AI to generate unique, realistic plant images on demand. Simply click the "Generate" button to create a new plant image, or customize your generation with specific prompts, different step counts, and image dimensions to create exactly the plant you envision.
+          </p>
+          <p className="mb-4 dark:text-gray-300">
+            The AI model has been trained on millions of images and can create botanically plausible plants that don&apos;t exist in nature, all rendered in a clean studio setting with professional lighting.
           </p>
         </section>
 
         <section className="bg-white dark:bg-gray-800 shadow-md dark:shadow-gray-700 rounded-lg p-6">
           <h2 className="text-2xl font-semibold mb-4 dark:text-white">Features</h2>
           <ul className="list-disc list-inside dark:text-gray-300">
-            <li>Generation of unique, AI-created plant images</li>
-            <li>Flavor text generation for each plant, providing imaginative descriptions</li>
-            <li>User-friendly interface for exploring generated plants (tbd.)</li>
+            <li>Instant generation of unique, AI-created plant images</li>
+            <li>Customizable prompts to specify plant characteristics</li>
+            <li>Adjustable generation steps for quality control</li>
+            <li>Choice between square and upright image formats</li>
+            <li>No account required - generate images immediately</li>
+            <li>Clean, studio-lit plant photography style</li>
           </ul>
         </section>
 

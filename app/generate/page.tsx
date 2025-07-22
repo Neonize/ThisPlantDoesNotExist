@@ -2,15 +2,14 @@
 
 import { useState, useEffect } from 'react';
 import Image from "next/image";
-import { supabase } from '@/app/lib/supabase';
 
-async function generateImage(customPrompt: string, steps: number, isSquare: boolean, userId: string | null): Promise<string> {
+async function generateImage(customPrompt: string, steps: number, isSquare: boolean): Promise<string> {
   const response = await fetch('/api/generate', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ customPrompt, steps, isSquare, userId }),
+    body: JSON.stringify({ customPrompt, steps, isSquare }),
   });
   if (!response.ok) {
     throw new Error('Failed to generate image');
@@ -27,26 +26,18 @@ export default function Generate() {
   const [customPrompt, setCustomPrompt] = useState('');
   const [steps, setSteps] = useState(4);
   const [isSquare, setIsSquare] = useState(true);
-  const [userId, setUserId] = useState<string | null>(null);
 
   useEffect(() => {
     if (window.location.hash === '#custom') {
       setShowCustomOptions(true);
     }
-
-    const fetchUserId = async () => {
-      const { data: { user } } = await supabase.auth.getUser();
-      setUserId(user ? user.id : null);
-    };
-
-    fetchUserId();
   }, []);
 
   const handleGenerate = async () => {
     setIsLoading(true);
     setError(null);
     try {
-      const url = await generateImage(customPrompt, steps, isSquare, userId);
+      const url = await generateImage(customPrompt, steps, isSquare);
       setImageUrl(url);
     } catch (err) {
       setError('Error generating image. Please try again.');
